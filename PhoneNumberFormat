@@ -1,0 +1,39 @@
+import java.util.Scanner;
+public class PhoneNumberFormat {
+
+	public static void main(String[] args) {
+		String inputNum = " ";
+		String set1 = " ";
+		String set2 = " "; 
+		String set3 = " ";
+		long numInput = 0;
+		Scanner input = new Scanner(System.in);
+
+		while (numInput != 999) {
+			System.out.print("Please input 10 digit phone number (no spaces or dashes): ");
+			numInput = input.nextLong();
+			inputNum = Long.toString(numInput);
+			
+			if (inputNum.length() == 10) {
+				for(int i = 0; i < inputNum.length(); i++) {
+					if(i == 3) {
+						set1 = inputNum.substring(0, i);
+					} else if (i == 6) {
+						set2 = inputNum.substring(3, i);
+						set3 = inputNum.substring(i);
+					}
+				}
+				
+				System.out.println("Complete Phone Number: (" + set1 + ") " + set2 + "-" + set3 + "\n");
+				
+			} else if (numInput == 999){
+				System.out.println("Thank you, please come again!");
+				input.close();
+			} else {
+				System.out.println("Error - Incorrect Number of Digits. Please try again!\n");
+			}
+		}
+		
+	}
+
+}
