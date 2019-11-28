@@ -1,0 +1,55 @@
+import java.util.Scanner;
+public class Alphabetize {
+
+	public static void main(String[] args) {
+		String string1;
+		String string2;
+		String string3;
+		String first;
+		String second;
+		String third;
+		String temp;
+		int comp12;
+		int compf3;
+		int comps3;
+		Scanner input = new Scanner(System.in);
+		
+		//Gather input
+		System.out.print("String 1: ");
+		string1 = input.nextLine();
+		System.out.print("String 2: ");
+		string2 = input.nextLine();
+		System.out.print("String 3: ");
+		string3 = input.nextLine();
+		input.close();
+		
+		comp12 = string1.compareTo(string2); //Compare strings 1 and 2
+		
+		if(comp12 < 0) {
+			first = string1;
+			second = string2;
+		} else {
+			first = string2;
+			second = string1;
+		}
+		
+		compf3 = first.compareTo(string3); //Compare the new first string and string 3
+		comps3 = second.compareTo(string3); //Compare the new second string and string 3
+		
+		if(compf3 < 0 && comps3 < 0)
+			third = string3;
+		else if(compf3 < 0 && comps3 > 0) {
+			temp = second;
+			second = string3;
+			third = temp;
+		} else {
+			third = second;
+			temp = first;
+			first = string3;
+			second = temp;
+		}
+		
+		System.out.println(first + "\n" + second + "\n" + third);
+	}
+
+}
